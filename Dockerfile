@@ -22,6 +22,8 @@ RUN \
     net-tools \
     netcat \
     sudo && \
+  echo "root:Ww12345" | chpasswd && \
+  echo "root ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
   echo "**** install code-server ****" && \
   if [ -z ${CODE_RELEASE+x} ]; then \
     CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/coder/code-server/releases/latest \
